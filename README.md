@@ -1,6 +1,6 @@
 # emotionlogger
 
-Log emotions in data base Do queries based onf variables
+Log emotions in data base Do queries based on variables
 
 ## why is this nuttig
 
