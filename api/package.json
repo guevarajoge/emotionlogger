@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.js",
-    "test": "jest"
+    "test": "jest --detectOpenHandles --coverage"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "knex": "^0.21.12",
     "nodemon": "^2.0.6",
     "pg": "^8.5.0",
+    "supertest": "^6.0.1",
     "uuid": "^8.3.1"
   },
   "keywords": [],
