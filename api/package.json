@@ -20,5 +20,10 @@
     "uuid": "^8.3.1"
   },
   "keywords": [],
-  "description": ""
+  "description": "",
+  "jest": {
+    "testPathIgnorePatterns": [
+      "src/integrationtest"
+    ]
+  }
 }

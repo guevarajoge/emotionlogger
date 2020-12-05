@@ -1,7 +1,7 @@
 const supertest = require('supertest');
 const http = require('http');
 
-const app = require('./../server.js');
+const app = require('../server.js');
 const request = supertest(app);
 const Helpers = require('../utils/helpers');
 

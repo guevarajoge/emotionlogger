@@ -1,94 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1607107319970" clover="3.2.0">
-  <project timestamp="1607107319970" name="All files">
-    <metrics statements="73" coveredstatements="47" conditionals="16" coveredconditionals="13" methods="18" coveredmethods="10" elements="107" coveredelements="70" complexity="0" loc="73" ncloc="73" packages="2" files="3" classes="3"/>
-    <package name="src">
-      <metrics statements="40" coveredstatements="32" conditionals="6" coveredconditionals="6" methods="9" coveredmethods="5"/>
-      <file name="server.js" path="/Users/jorgeguevara_16/Development/Ehb/Dev5/Taak/emotionlogger/api/src/server.js">
-        <metrics statements="40" coveredstatements="32" conditionals="6" coveredconditionals="6" methods="9" coveredmethods="5"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="22" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="25" count="2" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="29" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="34" count="2" type="stmt"/>
-        <line num="38" count="1" type="stmt"/>
-        <line num="39" count="3" type="stmt"/>
-        <line num="42" count="3" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
-        <line num="48" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="49" count="1" type="stmt"/>
-        <line num="51" count="1" type="stmt"/>
-        <line num="56" count="1" type="stmt"/>
-        <line num="59" count="1" type="stmt"/>
-        <line num="61" count="1" type="stmt"/>
-        <line num="65" count="1" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="67" count="0" type="stmt"/>
-        <line num="72" count="1" type="stmt"/>
-        <line num="73" count="0" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="80" count="0" type="stmt"/>
-        <line num="83" count="0" type="stmt"/>
-        <line num="86" count="1" type="stmt"/>
-        <line num="87" count="0" type="stmt"/>
-        <line num="91" count="0" type="stmt"/>
-        <line num="96" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="src.utils">
-      <metrics statements="33" coveredstatements="15" conditionals="10" coveredconditionals="7" methods="9" coveredmethods="5"/>
-      <file name="DatabaseHelper.js" path="/Users/jorgeguevara_16/Development/Ehb/Dev5/Taak/emotionlogger/api/src/utils/DatabaseHelper.js">
-        <metrics statements="25" coveredstatements="7" conditionals="6" coveredconditionals="3" methods="7" coveredmethods="3"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="33" count="1" type="stmt"/>
-        <line num="34" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="41" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="55" count="1" type="stmt"/>
-        <line num="57" count="1" type="stmt"/>
-      </file>
-      <file name="helpers.js" path="/Users/jorgeguevara_16/Development/Ehb/Dev5/Taak/emotionlogger/api/src/utils/helpers.js">
-        <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="18" count="3" type="cond" truecount="4" falsecount="0"/>
-        <line num="19" count="2" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="26" count="2" type="stmt"/>
-      </file>
-    </package>
+<coverage generated="1607189258090" clover="3.2.0">
+  <project timestamp="1607189258090" name="All files">
+    <metrics statements="8" coveredstatements="6" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="1" elements="14" coveredelements="11" complexity="0" loc="8" ncloc="8" packages="1" files="1" classes="1"/>
+    <file name="helpers.js" path="/Users/jorgeguevara_16/Development/Ehb/Dev5/Taak/emotionlogger/api/src/utils/helpers.js">
+      <metrics statements="8" coveredstatements="6" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="1"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="5" count="0" type="stmt"/>
+      <line num="6" count="0" type="stmt"/>
+      <line num="18" count="3" type="cond" truecount="4" falsecount="0"/>
+      <line num="19" count="2" type="stmt"/>
+      <line num="21" count="1" type="stmt"/>
+      <line num="26" count="1" type="stmt"/>
+    </file>
   </project>
 </coverage>
