@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1607189258090" clover="3.2.0">
-  <project timestamp="1607189258090" name="All files">
+<coverage generated="1607600282918" clover="3.2.0">
+  <project timestamp="1607600282919" name="All files">
     <metrics statements="8" coveredstatements="6" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="1" elements="14" coveredelements="11" complexity="0" loc="8" ncloc="8" packages="1" files="1" classes="1"/>
     <file name="helpers.js" path="/Users/jorgeguevara_16/Development/Ehb/Dev5/Taak/emotionlogger/api/src/utils/helpers.js">
       <metrics statements="8" coveredstatements="6" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="1"/>
