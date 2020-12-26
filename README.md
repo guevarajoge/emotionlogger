@@ -14,6 +14,6 @@ Log emotions in data base Do queries based on variables
 
 ## Status van the project
 
-bad v 5
+main v 1
 
 ## Autors
