@@ -6,6 +6,10 @@ Log emotions in data base Do queries based on variables
 
 ## getting started
 
+- Download
+- `cd api`
+- install dependencies `npm install `
+
 ## hulp finden
 
 ## Status van the project
