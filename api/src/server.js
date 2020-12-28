@@ -72,6 +72,45 @@ app.get('/', async (req, res) => {
   });
 });
 
+// CREATE
+// 1 emotion
+//POST add emotions
+app.post('/emotions-1', async (req, res) => {
+  const uuid = Helpers.generateUUID();
+  const result = await pg
+
+    .insert({ uuid, emotion: `joy`, category_id: `1` })
+    .table('emotions')
+    .then((res) => {
+      return res;
+    });
+  // console.log(result);
+  res.send(result);
+});
+// 8 emotion
+//POST add emotions
+app.post('/emotions-8', async (req, res) => {
+  const uuid = Helpers.generateUUID();
+  const result = await pg
+
+    .table('emotions')
+    .insert([
+      { uuid, emotion: `joy`, category_id: `1` },
+      { uuid, emotion: `whaaat`, category_id: `4` },
+      { uuid, emotion: `love`, category_id: `1` },
+      { uuid, emotion: `lonely`, category_id: `2` },
+      { uuid, emotion: `annoyed`, category_id: `3` },
+      { uuid, emotion: `hopeless`, category_id: `2` },
+      { uuid, emotion: `mad`, category_id: `3` },
+      { uuid, emotion: `peace`, category_id: `1` },
+    ])
+    .then((res) => {
+      return res;
+    });
+  // console.log(result);
+  res.send(result);
+});
+
 app.post('/story', async (req, res) => {
   const uuid = Helpers.generateUUID();
 
