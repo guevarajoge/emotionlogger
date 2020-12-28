@@ -24,13 +24,14 @@ async function initialiseTables() {
           console.log('created table EMOTIONS');
         });
     }
-    // add record to storyblock table
-    else {
-      // console.log('created table STORYBLOCK');
-      // const uuid = Helpers.generateUUID();
-      // await pg.table('storyblock').insert({ uuid, content: `add record` });
-    }
+    // add record to EMOTIONS table
+    // else {
+    //   console.log('created emotion entry to EMOTIONS tables');
+    //   const uuid = Helpers.generateUUID();
+    //   await pg.table('emotions').insert({ uuid, emotion: `anger` });
+    // }
   });
+  // add record to E_CATEGORES table
   await pg.schema.hasTable('e_categories').then(async (exists) => {
     if (!exists) {
       await pg.schema
@@ -41,13 +42,23 @@ async function initialiseTables() {
           table.timestamps(true, true);
         })
         .then(async () => {
-          console.log('created table CATEGORIES');
-          for (let i = 0; i < 3; i++) {
-            const uuid = Helpers.generateUUID();
-            await pg
-              .table('e_categories')
-              .insert({ uuid, category: `category ${i}` });
-          }
+          console.log('created table E_CATEGORIES');
+          const uuid = Helpers.generateUUID();
+          console.log('created 4 e_categories ');
+
+          await pg.table('e_categories').insert([
+            { uuid, category: `happy` },
+            { uuid, category: `sad` },
+            { uuid, category: `angry` },
+            { uuid, category: `surprise` },
+          ]);
+
+          // for (let i = 0; i < 3; i++) {
+          //   const uuid = Helpers.generateUUID();
+          //   await pg
+          //     .table('e_categories')
+          //     .insert({ uuid, category: `category ${i}` });
+          // }
         });
     }
   });
