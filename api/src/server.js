@@ -62,8 +62,11 @@ app.post('/storyblock', async (req, res) => {
   }
 });
 
+// ROOT
 app.get('/', async (req, res) => {
-  const result = await pg.select(['uuid', 'title', 'created_at']).from('story');
+  const result = await pg
+    .select(['uuid', 'emotion', 'category_id'])
+    .from('emotions');
   res.json({
     res: result,
   });
@@ -73,15 +76,29 @@ app.post('/story', async (req, res) => {
   const uuid = Helpers.generateUUID();
 
   const result = await pg
-    .insert({ ...req.body, uuid: uuid })
+
     .table('story')
-    .returning('*')
+    .insert({ uuid, title: `test`, summary: `testSum` })
     .then((res) => {
       return res;
     });
   // console.log(result);
   res.send(result);
 });
+
+// app.post('/story', async (req, res) => {
+//   const uuid = Helpers.generateUUID();
+
+//   const result = await pg
+//     .insert({ ...req.body, uuid: uuid })
+//     .table('story')
+//     .returning('*')
+//     .then((res) => {
+//       return res;
+//     });
+//   // console.log(result);
+//   res.send(result);
+// });
 
 app.get('/story/:uuid', async (req, res) => {
   const result = await pg
