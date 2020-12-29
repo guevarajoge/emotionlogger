@@ -48,7 +48,7 @@ describe('POST/ test storyblock table', () => {
     try {
       await request
         .post('/storyblock')
-        .send({ content: 'NEW Test ', story_id: 2 })
+        .send({ content: 'NEW Test 5', story_id: 2 })
         .expect(200);
       done();
     } catch (error) {}
