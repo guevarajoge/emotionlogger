@@ -97,7 +97,7 @@ app.post('/emotions-1', async (req, res) => {
   const uuid = Helpers.generateUUID();
   const result = await pg
 
-    .insert({ uuid, emotion: `joy`, category_id: `1` })
+    .insert({ uuid, emotion: `exited`, category_id: `1` })
     .table('emotions')
     .returning('*')
     .then((res) => {
