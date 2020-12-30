@@ -55,7 +55,7 @@ app.post('/storyblock', async (req, res) => {
       .then((res) => {
         return res;
       });
-    // console.log(result);
+    console.log(result);
     res.send(result);
   } else {
     res.status(400).send();
