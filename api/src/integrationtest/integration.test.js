@@ -91,6 +91,7 @@ describe('POST/ emotions-8 endpoint', () => {
 });
 */
 
+//GET /test endpoint
 describe('GET /test end point', () => {
   test('check respond with 204', async (done) => {
     try {
