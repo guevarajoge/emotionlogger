@@ -1,10 +1,2 @@
 /api/node_modules
-
-api/coverage
-api/coverage/clover.xml
-api/coverage/lcov-report/index.html
-api/coverage/lcov-report/src/index.html
-api/coverage/lcov-report/src/server.js.html
-api/coverage/lcov-report/src/utils/DatabaseHelper.js.html
-api/coverage/lcov-report/src/utils/helpers.js.html
-api/coverage/lcov-report/src/utils/index.html
+/api/coverage

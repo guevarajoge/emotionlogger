@@ -19,6 +19,7 @@ describe('check GET /storyblock ', () => {
       console.log(error);
     }
   });
+
   test('check that GET/storyblock return all results & that all columns are defined ', async (done) => {
     try {
       const waitRequest = await request.get('/storyblock');
@@ -43,24 +44,63 @@ describe('check GET /storyblock ', () => {
   });
 });
 
-describe('POST/ test storyblock table', () => {
+// POST /emotions endpoint test
+describe('POST/ emotions endpoint', () => {
   test('if user adds record with body', async (done) => {
     try {
       await request
-        .post('/storyblock')
-        .send({ content: 'NEW Test 9', story_id: 2 })
+        .post('/emotions')
+        .send({ emotion: 'sadness', category_id: 2 })
         .expect(200);
       done();
     } catch (error) {}
   });
   test('respond with 400 if no object is sent', async (done) => {
     try {
-      const storyblockPost = await request.post('/storyblock');
+      const storyblockPost = await request.post('/emotions');
       expect(storyblockPost.status).toBe(400);
       done();
     } catch (error) {}
   });
 });
+//POST /emotions-1. Test if endpoint exist
+describe('POST/ emotions-1 endpoint', () => {
+  test('if endpoint exist', async (done) => {
+    try {
+      await request.post('/emotions-1').expect(200);
+      done();
+    } catch (error) {}
+  });
+});
+//POST /emotions-8. Test if endpoint exist & that 8 new entries were added by server
+describe('POST/ emotions-8 endpoint', () => {
+  test('if endpoint exist & that 8 new entries where added', async (done) => {
+    try {
+      const emo = await request.post('/emotions-8');
+      expect(emo.body).toHaveLength(8);
+      done();
+    } catch (error) {}
+  });
+});
+
+// describe('POST/ test storyblock table', () => {
+//   test('if user adds record with body', async (done) => {
+//     try {
+//       await request
+//         .post('/storyblock')
+//         .send({ content: 'NEW Test 12', story_id: 2 })
+//         .expect(200);
+//       done();
+//     } catch (error) {}
+//   });
+//   test('respond with 400 if no object is sent', async (done) => {
+//     try {
+//       const storyblockPost = await request.post('/storyblock');
+//       expect(storyblockPost.status).toBe(400);
+//       done();
+//     } catch (error) {}
+//   });
+// });
 
 describe('GET /test end point', () => {
   test('check respond with 204', async (done) => {

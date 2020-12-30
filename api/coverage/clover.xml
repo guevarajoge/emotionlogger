@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1609344915104" clover="3.2.0">
-  <project timestamp="1609344915104" name="All files">
-    <metrics statements="105" coveredstatements="55" conditionals="20" coveredconditionals="15" methods="28" coveredmethods="12" elements="153" coveredelements="82" complexity="0" loc="105" ncloc="105" packages="2" files="3" classes="3"/>
+<coverage generated="1609350978664" clover="3.2.0">
+  <project timestamp="1609350978664" name="All files">
+    <metrics statements="112" coveredstatements="67" conditionals="22" coveredconditionals="15" methods="28" coveredmethods="16" elements="162" coveredelements="98" complexity="0" loc="112" ncloc="112" packages="2" files="3" classes="3"/>
     <package name="src">
-      <metrics statements="51" coveredstatements="35" conditionals="6" coveredconditionals="6" methods="13" coveredmethods="5"/>
+      <metrics statements="58" coveredstatements="47" conditionals="8" coveredconditionals="6" methods="13" coveredmethods="9"/>
       <file name="server.js" path="/Users/jorgeguevara_16/Development/Ehb/Dev5/Taak/emotionlogger/api/src/server.js">
-        <metrics statements="51" coveredstatements="35" conditionals="6" coveredconditionals="6" methods="13" coveredmethods="5"/>
+        <metrics statements="58" coveredstatements="47" conditionals="8" coveredconditionals="6" methods="13" coveredmethods="9"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -28,35 +28,42 @@
         <line num="39" count="3" type="stmt"/>
         <line num="42" count="3" type="stmt"/>
         <line num="47" count="1" type="stmt"/>
-        <line num="48" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="49" count="1" type="stmt"/>
-        <line num="51" count="1" type="stmt"/>
-        <line num="56" count="1" type="stmt"/>
-        <line num="58" count="1" type="stmt"/>
-        <line num="59" count="1" type="stmt"/>
-        <line num="61" count="1" type="stmt"/>
+        <line num="48" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
         <line num="66" count="1" type="stmt"/>
         <line num="67" count="0" type="stmt"/>
         <line num="70" count="0" type="stmt"/>
-        <line num="78" count="1" type="stmt"/>
-        <line num="79" count="0" type="stmt"/>
-        <line num="80" count="0" type="stmt"/>
-        <line num="85" count="0" type="stmt"/>
-        <line num="88" count="0" type="stmt"/>
-        <line num="92" count="1" type="stmt"/>
-        <line num="93" count="0" type="stmt"/>
-        <line num="94" count="0" type="stmt"/>
-        <line num="108" count="0" type="stmt"/>
-        <line num="111" count="0" type="stmt"/>
+        <line num="77" count="1" type="stmt"/>
+        <line num="78" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="79" count="1" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
+        <line num="86" count="1" type="stmt"/>
+        <line num="88" count="1" type="stmt"/>
+        <line num="89" count="1" type="stmt"/>
+        <line num="91" count="1" type="stmt"/>
+        <line num="96" count="1" type="stmt"/>
+        <line num="97" count="1" type="stmt"/>
+        <line num="98" count="1" type="stmt"/>
+        <line num="104" count="1" type="stmt"/>
+        <line num="106" count="1" type="stmt"/>
+        <line num="107" count="1" type="stmt"/>
+        <line num="108" count="1" type="stmt"/>
+        <line num="112" count="1" type="stmt"/>
+        <line num="113" count="1" type="stmt"/>
         <line num="114" count="1" type="stmt"/>
-        <line num="115" count="0" type="stmt"/>
-        <line num="117" count="0" type="stmt"/>
-        <line num="122" count="0" type="stmt"/>
-        <line num="125" count="0" type="stmt"/>
-        <line num="142" count="1" type="stmt"/>
-        <line num="143" count="0" type="stmt"/>
-        <line num="147" count="0" type="stmt"/>
-        <line num="152" count="1" type="stmt"/>
+        <line num="129" count="1" type="stmt"/>
+        <line num="131" count="1" type="stmt"/>
+        <line num="132" count="1" type="stmt"/>
+        <line num="133" count="1" type="stmt"/>
+        <line num="164" count="1" type="stmt"/>
+        <line num="165" count="0" type="stmt"/>
+        <line num="169" count="0" type="stmt"/>
+        <line num="174" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.utils">
@@ -114,8 +121,8 @@
         <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
         <line num="1" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
         <line num="18" count="3" type="cond" truecount="4" falsecount="0"/>
         <line num="19" count="2" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
