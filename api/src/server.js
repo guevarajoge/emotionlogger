@@ -18,6 +18,22 @@ app.use(
   })
 );
 
+//DELETE
+//DELETE selected entry based on valid ID number from emotions table
+//.where('id',<your id number>)
+app.delete('/emotions-down', async (req, res) => {
+  const result = await pg
+    .table('emotions')
+    .where('id', '1')
+    .del(['id', 'emotion'], { includeTriggerModifications: true })
+    .then((res) => {
+      return res;
+    });
+  console.log('DELETE 1 emotion entry');
+  console.log(result);
+  res.send(result);
+});
+
 // ROOT
 //READ
 //GET emotions - endpoint
