@@ -18,32 +18,25 @@ app.use(
   })
 );
 
-app.get('/test', (req, res) => {
-  if (Object.keys(req.query).length > 0) {
-    res.sendStatus(400);
-  }
-  res.status(204).send();
-});
-
-app.post('/test', (req, res) => {
-  if (Object.keys(req.body).length > 0) {
-    // console.log('server test');
-    // console.log(req.body);
-    res.sendStatus(201);
-  }
-  res.status(400).send();
-});
-
 // ROOT
 //READ
 //GET emotions - endpoint
 app.get('/emotions', async (req, res) => {
   const result = await pg
-    .select(['uuid', 'emotion', 'category_id'])
+    .select([
+      'id',
+      'uuid',
+      'emotion',
+      'category_id',
+      'created_at',
+      'updated_at',
+    ])
     .from('emotions');
   res.json({
     res: result,
   });
+  // console.log('show first entry with all columns');
+  // console.log(result[0]);
 });
 
 // CREATE
@@ -113,9 +106,11 @@ app.get('/storyblock', async (req, res) => {
   const result = await pg
     .select(['uuid', 'content', 'story_id', 'created_at'])
     .from('storyblock');
+
   res.json({
     res: result,
   });
+  // console.log(result[0]);
 });
 
 app.post('/storyblock', async (req, res) => {
@@ -172,6 +167,22 @@ app.get('/story/:uuid', async (req, res) => {
   res.json({
     res: result,
   });
+});
+
+app.get('/test', (req, res) => {
+  if (Object.keys(req.query).length > 0) {
+    res.sendStatus(400);
+  }
+  res.status(204).send();
+});
+
+app.post('/test', (req, res) => {
+  if (Object.keys(req.body).length > 0) {
+    // console.log('server test');
+    // console.log(req.body);
+    res.sendStatus(201);
+  }
+  res.status(400).send();
 });
 
 module.exports = app;

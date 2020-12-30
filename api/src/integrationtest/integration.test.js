@@ -1,15 +1,15 @@
 const supertest = require('supertest');
 const http = require('http');
-
 const app = require('../server.js');
 const request = supertest(app);
 const Helpers = require('../utils/helpers');
 
-describe('check GET /storyblock ', () => {
-  test('check that GET /storyblock exist ', async (done) => {
+// test GET/emotions endpoint
+describe('check GET /emotions ', () => {
+  test('check that GET /emotions exist ', async (done) => {
     try {
       await request
-        .get('/storyblock')
+        .get('/emotions')
         .expect(200)
         .then((res) => {
           // console.log(res.body.res[0]);
@@ -19,23 +19,28 @@ describe('check GET /storyblock ', () => {
       console.log(error);
     }
   });
-
-  test('check that GET/storyblock return all results & that all columns are defined ', async (done) => {
+  test('check that GET/emotions return all results & that all columns are defined ', async (done) => {
     try {
-      const waitRequest = await request.get('/storyblock');
+      const waitRequest = await request.get('/emotions');
+
+      console.log('show first entry with all columns');
+      console.log(waitRequest.body.res[0]);
+
       expect(waitRequest.body).not.toBeNull();
+      expect(waitRequest.body.res[0]['id']).toBeDefined();
       expect(waitRequest.body.res[0]['uuid']).toBeDefined();
-      expect(waitRequest.body.res[0]['content']).toBeDefined();
-      expect(waitRequest.body.res[0]['story_id']).toBeDefined();
+      expect(waitRequest.body.res[0]['emotion']).toBeDefined();
+      expect(waitRequest.body.res[0]['category_id']).toBeDefined();
       expect(waitRequest.body.res[0]['created_at']).toBeDefined();
+      expect(waitRequest.body.res[0]['updated_at']).toBeDefined();
       done();
     } catch (error) {
       console.log(error);
     }
   });
-  test('check that GET/storyblock  "noexisting"  column is false  ', async (done) => {
+  test('check that GET/emotions  "noexisting"  column is false  ', async (done) => {
     try {
-      const waitRequest = await request.get('/storyblock');
+      const waitRequest = await request.get('/emotions');
       expect(waitRequest.body.res[0]['noexisting']).toBeFalsy();
       done();
     } catch (error) {
@@ -43,6 +48,7 @@ describe('check GET /storyblock ', () => {
     }
   });
 });
+
 /*
 //TAAK
 // POST /emotions endpoint test
@@ -155,6 +161,44 @@ describe('POST /test end point', () => {
         done(e);
         done();
       }
+    }
+  });
+});
+describe('check GET /storyblock ', () => {
+  test('check that GET /storyblock exist ', async (done) => {
+    try {
+      await request
+        .get('/storyblock')
+        .expect(200)
+        .then((res) => {
+          // console.log(res.body.res[0]);
+        });
+      done();
+    } catch (error) {
+      console.log(error);
+    }
+  });
+
+  test('check that GET/storyblock return all results & that all columns are defined ', async (done) => {
+    try {
+      const waitRequest = await request.get('/storyblock');
+      expect(waitRequest.body).not.toBeNull();
+      expect(waitRequest.body.res[0]['uuid']).toBeDefined();
+      expect(waitRequest.body.res[0]['content']).toBeDefined();
+      expect(waitRequest.body.res[0]['story_id']).toBeDefined();
+      expect(waitRequest.body.res[0]['created_at']).toBeDefined();
+      done();
+    } catch (error) {
+      console.log(error);
+    }
+  });
+  test('check that GET/storyblock  "noexisting"  column is false  ', async (done) => {
+    try {
+      const waitRequest = await request.get('/storyblock');
+      expect(waitRequest.body.res[0]['noexisting']).toBeFalsy();
+      done();
+    } catch (error) {
+      console.log(error);
     }
   });
 });
