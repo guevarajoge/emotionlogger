@@ -43,7 +43,8 @@ describe('check GET /storyblock ', () => {
     }
   });
 });
-
+/*
+//TAAK
 // POST /emotions endpoint test
 describe('POST/ emotions endpoint', () => {
   test('if user adds record with body', async (done) => {
@@ -82,25 +83,7 @@ describe('POST/ emotions-8 endpoint', () => {
     } catch (error) {}
   });
 });
-
-// describe('POST/ test storyblock table', () => {
-//   test('if user adds record with body', async (done) => {
-//     try {
-//       await request
-//         .post('/storyblock')
-//         .send({ content: 'NEW Test 12', story_id: 2 })
-//         .expect(200);
-//       done();
-//     } catch (error) {}
-//   });
-//   test('respond with 400 if no object is sent', async (done) => {
-//     try {
-//       const storyblockPost = await request.post('/storyblock');
-//       expect(storyblockPost.status).toBe(400);
-//       done();
-//     } catch (error) {}
-//   });
-// });
+*/
 
 describe('GET /test end point', () => {
   test('check respond with 204', async (done) => {
