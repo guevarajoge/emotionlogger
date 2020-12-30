@@ -55,7 +55,7 @@ app.post('/storyblock', async (req, res) => {
       .then((res) => {
         return res;
       });
-    // console.log(result);
+    console.log(result);
     res.send(result);
   } else {
     res.status(400).send();
@@ -72,19 +72,80 @@ app.get('/', async (req, res) => {
   });
 });
 
-app.post('/story', async (req, res) => {
-  const uuid = Helpers.generateUUID();
+// CREATE
+//POST emotions - endpoint without body TO BE TESTED
+app.post('/emotions', async (req, res) => {
+  if (Object.keys(req.body).length > 0) {
+    const uuid = Helpers.generateUUID();
 
+    const result = await pg
+      .insert({ ...req.body, uuid: uuid })
+      .table('emotions')
+      .returning('*')
+      .then((res) => {
+        return res;
+      });
+    console.log(result);
+    res.send(result);
+  } else {
+    res.status(400).send();
+  }
+});
+// 1 emotion
+//POST add emotions
+app.post('/emotions-1', async (req, res) => {
+  const uuid = Helpers.generateUUID();
   const result = await pg
 
-    .table('story')
-    .insert({ uuid, title: `test`, summary: `testSum` })
+    .insert({ uuid, emotion: `exited`, category_id: `1` })
+    .table('emotions')
+    .returning('*')
     .then((res) => {
       return res;
     });
-  // console.log(result);
+  console.log('add 1 emotion entry');
+  console.log(result);
   res.send(result);
 });
+// 8 emotion
+//POST add emotions
+app.post('/emotions-8', async (req, res) => {
+  const uuid = Helpers.generateUUID();
+  const result = await pg
+
+    .table('emotions')
+    .insert([
+      { uuid, emotion: `joy`, category_id: `1` },
+      { uuid, emotion: `whaaat`, category_id: `4` },
+      { uuid, emotion: `love`, category_id: `1` },
+      { uuid, emotion: `lonely`, category_id: `2` },
+      { uuid, emotion: `annoyed`, category_id: `3` },
+      { uuid, emotion: `hopeless`, category_id: `2` },
+      { uuid, emotion: `mad`, category_id: `3` },
+      { uuid, emotion: `peace`, category_id: `1` },
+    ])
+    .returning('*')
+    .then((res) => {
+      return res;
+    });
+  console.log('add 8 emotion entry');
+  console.log(result);
+  res.send(result);
+});
+
+// app.post('/story', async (req, res) => {
+//   const uuid = Helpers.generateUUID();
+
+//   const result = await pg
+
+//     .table('story')
+//     .insert({ uuid, title: `test`, summary: `testSum` })
+//     .then((res) => {
+//       return res;
+//     });
+//   // console.log(result);
+//   res.send(result);
+// });
 
 // app.post('/story', async (req, res) => {
 //   const uuid = Helpers.generateUUID();
