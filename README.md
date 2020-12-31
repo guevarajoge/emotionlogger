@@ -4,7 +4,7 @@ Log emotions in data base Do queries based on variables
 
 ## Relevance
 
-Emotionlogger is a template based on 2 tables to do queries, feel free to expand the project on your own, for contributing with this project please reffer to the CONTRIBUTING.md guideline
+Emotionlogger is a template based on 2 tables to do queries, feel free to expand the project on your own. If you wish to contribute to expand this project, you are very welcome. Please reffer to the CONTRIBUTING.md guideline
 
 ## Getting started
 
@@ -34,3 +34,9 @@ Use <https://www.postman.com/> to test fast the endpoints
 ## Status van the project
 
 beta 1.0.0
+
+## Autor
+
+Jorge Guevara - 2020
+
+jorgeguevara@designingart.eu
