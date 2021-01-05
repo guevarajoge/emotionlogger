@@ -4,9 +4,8 @@ const app = require('../server.js');
 const request = supertest(app);
 const Helpers = require('../utils/helpers');
 
-/*
-//TAAK
-// POST /emotions endpoint test
+// adds one entry to emotions table
+// POST /emotions Test endpoint
 describe('POST/ emotions endpoint', () => {
   test('if user adds record with body', async (done) => {
     try {
@@ -25,7 +24,8 @@ describe('POST/ emotions endpoint', () => {
     } catch (error) {}
   });
 });
-//POST /emotions-1. Test if endpoint exist
+
+// POST /emotions-1. Test if endpoint exist
 describe('POST/ emotions-1 endpoint', () => {
   test('if endpoint exist', async (done) => {
     try {
@@ -34,7 +34,7 @@ describe('POST/ emotions-1 endpoint', () => {
     } catch (error) {}
   });
 });
-//POST /emotions-8. Test if endpoint exist & that 8 new entries were added by the server
+// POST /emotions-8. Test if endpoint exist & that 8 new entries were added by the server
 describe('POST/ emotions-8 endpoint', () => {
   test('if endpoint exist & that 8 new entries where added', async (done) => {
     try {
@@ -44,7 +44,7 @@ describe('POST/ emotions-8 endpoint', () => {
     } catch (error) {}
   });
 });
-*/
+
 // test GET/emotions endpoint
 describe('check GET /emotions ', () => {
   test('check that GET /emotions exist ', async (done) => {
@@ -90,6 +90,9 @@ describe('check GET /emotions ', () => {
   });
 });
 
+/**
+ * Initial enpoints test
+ */
 //GET /test endpoint
 describe('GET /test end point', () => {
   test('check respond with 204', async (done) => {
@@ -161,44 +164,6 @@ describe('POST /test end point', () => {
         done(e);
         done();
       }
-    }
-  });
-});
-describe('check GET /storyblock ', () => {
-  test('check that GET /storyblock exist ', async (done) => {
-    try {
-      await request
-        .get('/storyblock')
-        .expect(200)
-        .then((res) => {
-          // console.log(res.body.res[0]);
-        });
-      done();
-    } catch (error) {
-      console.log(error);
-    }
-  });
-
-  test('check that GET/storyblock return all results & that all columns are defined ', async (done) => {
-    try {
-      const waitRequest = await request.get('/storyblock');
-      expect(waitRequest.body).not.toBeNull();
-      expect(waitRequest.body.res[0]['uuid']).toBeDefined();
-      expect(waitRequest.body.res[0]['content']).toBeDefined();
-      expect(waitRequest.body.res[0]['story_id']).toBeDefined();
-      expect(waitRequest.body.res[0]['created_at']).toBeDefined();
-      done();
-    } catch (error) {
-      console.log(error);
-    }
-  });
-  test('check that GET/storyblock  "noexisting"  column is false  ', async (done) => {
-    try {
-      const waitRequest = await request.get('/storyblock');
-      expect(waitRequest.body.res[0]['noexisting']).toBeFalsy();
-      done();
-    } catch (error) {
-      console.log(error);
     }
   });
 });

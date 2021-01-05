@@ -1,13 +1,22 @@
 const Helpers = require('../utils/helpers');
 
-describe('testing the titles', () => {
-  test('title must start with capilal letter', () => {
-    expect(Helpers.checkingTitle('Title')).toMatch(/[A-Z]\w+/);
+/**
+ * Unitesting
+ * uses the imported functions from src/utils/helpers.js
+ * Test that emotion entry:
+ *      cannot beging with a capital letter,
+ *      is not longer than 50 chars,
+ *      must be a string
+ */
+
+describe('testing the emotion entries', () => {
+  test('emotion entry cannot  begin with capilal letter', () => {
+    expect(Helpers.checkingEmoEntry('exited')).not.toMatch(/[A-Z]\w+/);
   });
-  test('not longer than 50 letter ', () => {
-    expect(Helpers.checkingTitle('Title name')).toBeDefined();
+  test('emotion entry is not longer than 50 characters', () => {
+    expect(Helpers.checkingEmoEntry('mega mega mega mega happy')).toBeDefined();
   });
-  test('must be astring ', () => {
-    expect(Helpers.checkingTitle(33)).toBeFalsy();
+  test('emotion entry must be a string ', () => {
+    expect(Helpers.checkingEmoEntry(33)).toBeFalsy();
   });
 });

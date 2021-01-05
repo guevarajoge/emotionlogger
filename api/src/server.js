@@ -19,8 +19,8 @@ app.use(
 );
 
 //DELETE
-//DELETE selected entry based on valid ID number from emotions table
-//.where('id',<your id number>)
+//DELETE selected entry based on VALID ID number from emotions table
+//.where('id',<your valid id number>)
 app.delete('/emotions-down', async (req, res) => {
   const result = await pg
     .table('emotions')
@@ -34,7 +34,6 @@ app.delete('/emotions-down', async (req, res) => {
   res.send(result);
 });
 
-// ROOT
 //READ
 //GET emotions - endpoint
 app.get('/emotions', async (req, res) => {
@@ -56,7 +55,7 @@ app.get('/emotions', async (req, res) => {
 });
 
 // CREATE
-//POST emotions - endpoint without body TO BE TESTED
+//POST emotions - endpoint TO BE TESTED
 app.post('/emotions', async (req, res) => {
   if (Object.keys(req.body).length > 0) {
     const uuid = Helpers.generateUUID();
@@ -74,7 +73,8 @@ app.post('/emotions', async (req, res) => {
     res.status(400).send();
   }
 });
-// 1 emotion
+
+// adds 1 entry to emotions table
 //POST add emotions
 app.post('/emotions-1', async (req, res) => {
   const uuid = Helpers.generateUUID();
@@ -90,7 +90,8 @@ app.post('/emotions-1', async (req, res) => {
   console.log(result);
   res.send(result);
 });
-// 8 emotion
+
+// adds 8 entries to the emotions table
 //POST add emotions
 app.post('/emotions-8', async (req, res) => {
   const uuid = Helpers.generateUUID();
@@ -116,75 +117,10 @@ app.post('/emotions-8', async (req, res) => {
   res.send(result);
 });
 
-//BOOKS
-//GET all records from storyblock table
-app.get('/storyblock', async (req, res) => {
-  const result = await pg
-    .select(['uuid', 'content', 'story_id', 'created_at'])
-    .from('storyblock');
-
-  res.json({
-    res: result,
-  });
-  // console.log(result[0]);
-});
-
-app.post('/storyblock', async (req, res) => {
-  if (Object.keys(req.body).length > 0) {
-    const uuid = Helpers.generateUUID();
-
-    const result = await pg
-      .insert({ ...req.body, uuid: uuid })
-      .table('storyblock')
-      .returning('*')
-      .then((res) => {
-        return res;
-      });
-    console.log(result);
-    res.send(result);
-  } else {
-    res.status(400).send();
-  }
-});
-
-// app.post('/story', async (req, res) => {
-//   const uuid = Helpers.generateUUID();
-
-//   const result = await pg
-
-//     .table('story')
-//     .insert({ uuid, title: `test`, summary: `testSum` })
-//     .then((res) => {
-//       return res;
-//     });
-//   // console.log(result);
-//   res.send(result);
-// });
-
-// app.post('/story', async (req, res) => {
-//   const uuid = Helpers.generateUUID();
-
-//   const result = await pg
-//     .insert({ ...req.body, uuid: uuid })
-//     .table('story')
-//     .returning('*')
-//     .then((res) => {
-//       return res;
-//     });
-//   // console.log(result);
-//   res.send(result);
-// });
-
-app.get('/story/:uuid', async (req, res) => {
-  const result = await pg
-    .select(['uuid', 'title', 'created_at'])
-    .from('story')
-    .where({ uuid: req.params.uuid });
-  res.json({
-    res: result,
-  });
-});
-
+/**
+ * Initial enpoints
+ * they have only testing purpose via the integration test
+ */
 app.get('/test', (req, res) => {
   if (Object.keys(req.query).length > 0) {
     res.sendStatus(400);

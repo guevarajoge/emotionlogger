@@ -7,20 +7,19 @@ const Helpers = {
   },
 
   /**
-   * checks if a title is not longer than 100 chars,
-   * must begining with capital letter
+   * checks if an emotion entry is not longer than 50 chars,
+   * cannot beging with a capital letter,
    * must be a string
-   * @params: titleInput: String
+   * @params: checkingEmoEntry: String
    * returns a String
    */
 
-  checkingTitle: (a) => {
-    if (a.length < 100 && typeof a === 'string') {
+  checkingEmoEntry: (a) => {
+    if (a.length < 50 && typeof a === 'string') {
       return a;
     } else {
       false;
     }
   },
 };
-// a.length < 4 &&
 module.exports = Helpers;
