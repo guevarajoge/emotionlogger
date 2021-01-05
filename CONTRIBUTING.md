@@ -15,8 +15,7 @@ I only accept pull requests that:
 In the case of adding a new function:
 
 - document where the original source came from
-- document the path from the function is exported
-- All code must follow the styles dictated by ESLint. As long as you don't skip - the git hooks, you shouldn't need to worry about missing something.
+- document the path where the function is exported
 
 **Also, please discuss any changes in the issues before working on a PR to make sure that I'll accept it**
 
