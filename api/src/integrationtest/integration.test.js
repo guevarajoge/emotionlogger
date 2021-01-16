@@ -8,12 +8,12 @@ const Helpers = require('../utils/helpers');
 // POST /emotions Test endpoint
 
 describe('POST/ emotions endpoint', () => {
-  const uuid = Helpers.generateUUID();
-  let emoEntry = [
+  let uuid = Helpers.generateUUID();
+  const emoEntry = [
     {
       uuid: uuid,
       emotion: 'hopefull',
-      category_id: 4,
+      category_id: 1,
     },
     {
       e_category: 'happy',
