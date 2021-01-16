@@ -4,36 +4,45 @@ const app = require('../server.js');
 const request = supertest(app);
 const Helpers = require('../utils/helpers');
 
+const pg = require('knex')({
+  client: 'pg',
+  version: '9.6',
+  searchPath: ['knex', 'public'],
+  connection: process.env.PG_CONNECTION_STRING
+    ? process.env.PG_CONNECTION_STRING
+    : 'postgres://example:example@localhost:5432/test',
+});
+
 // adds one entry to emotions table
 // POST /emotions Test endpoint
 
-describe('POST/ emotions endpoint', () => {
-  let uuid = Helpers.generateUUID();
-  const emoEntry = [
-    {
-      uuid: uuid,
-      emotion: 'hopefull',
-      category_id: 1,
-    },
-    {
-      e_category: 'happy',
-    },
-  ];
+// describe('POST/ emotions endpoint', () => {
+//   let uuid = Helpers.generateUUID();
+//   const emoEntry = [
+//     {
+//       uuid: uuid,
+//       emotion: 'hopefull',
+//       category_id: 1,
+//     },
+//     {
+//       e_category: 'happy',
+//     },
+//   ];
 
-  test('if user adds record with body', async (done) => {
-    try {
-      await request.post('/emotions').send(emoEntry).expect(201);
-      done();
-    } catch (error) {}
-  });
-  test('respond with 400 if no object is sent', async (done) => {
-    try {
-      const storyblockPost = await request.post('/emotions');
-      expect(storyblockPost.status).toBe(400);
-      done();
-    } catch (error) {}
-  });
-});
+//   test('if user adds record with body', async (done) => {
+//     try {
+//       await request.post('/emotions').send(emoEntry).expect(201);
+//       done();
+//     } catch (error) {}
+//   });
+//   test('respond with 400 if no object is sent', async (done) => {
+//     try {
+//       const storyblockPost = await request.post('/emotions');
+//       expect(storyblockPost.status).toBe(400);
+//       done();
+//     } catch (error) {}
+//   });
+// });
 
 /*
 // POST /emotions-1. Test if endpoint exist
