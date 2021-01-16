@@ -67,4 +67,15 @@ describe('POST/ emotions endpoint', () => {
       if (e) console.log(e);
     }
   });
+
+  test('if get request of join succeeds', async (done) => {
+    try {
+      const response = await request.get(`/join`);
+      expect(response.status).toBe(200);
+      //   expect(response.body[0]['emotion']).toBeDefined();
+      done();
+    } catch (e) {
+      if (e) console.log(e);
+    }
+  });
 });

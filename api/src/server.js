@@ -15,6 +15,25 @@ app.use(
   })
 );
 
+/**
+ * @param
+ * @returns
+ */
+app.get('/join', async (req, res) => {
+  await pg
+    .table('emotions')
+    .join(
+      'e_categories',
+      pg.raw('emotions.joinbycategory::varchar'),
+      pg.raw('e_categories.uuid::varchar')
+    )
+    .select('e_categories.*', 'emotions.*')
+    .then((data) => {
+      res.status(200);
+      res.send(data);
+    });
+});
+
 /**  update disaster by uuid
  * @params uuid
  * @returns status 200 and updated disaster when OK, status 404 when not OK

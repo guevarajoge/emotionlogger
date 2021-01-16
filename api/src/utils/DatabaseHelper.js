@@ -18,6 +18,7 @@ async function initialiseTables() {
           table.uuid('uuid');
           table.string('emotion');
           table.string('category_id');
+          table.string('joinbycategory');
           table.timestamps(true, true);
         })
         .then(async () => {
