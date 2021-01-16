@@ -23,6 +23,15 @@ async function initialiseTables() {
         })
         .then(async () => {
           console.log('created table EMOTIONS');
+          const uuid = Helpers.generateUUID();
+          console.log('created 4 emoions ');
+
+          await pg.table('emotions').insert([
+            { uuid, emotion: `amused`, category_id: '1' },
+            { uuid, emotion: `sorrowful`, category_id: '2' },
+            { uuid, emotion: `furious`, category_id: '3' },
+            { uuid, emotion: `surprise`, category_id: '4' },
+          ]);
         });
     }
     // add record to EMOTIONS table

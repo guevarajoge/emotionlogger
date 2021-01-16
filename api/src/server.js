@@ -15,6 +15,69 @@ app.use(
   })
 );
 
+/**
+ * @param
+ * @returns
+ */
+app.get('/join', async (req, res) => {
+  await pg
+    .table('emotions')
+    .join(
+      'e_categories',
+      pg.raw('emotions.joinbycategory::varchar'),
+      pg.raw('e_categories.uuid::varchar')
+    )
+    .select('e_categories.*', 'emotions.*')
+    .then((data) => {
+      res.status(200);
+      res.send(data);
+    });
+});
+
+/**  update disaster by uuid
+ * @params uuid
+ * @returns status 200 and updated disaster when OK, status 404 when not OK
+ */
+app.put('/emotions', async (req, res) => {
+  const uuid = req.body.uuid;
+  const dataToUpdate = req.body;
+  pg('emotions')
+    .where({
+      uuid: uuid,
+    })
+    .update(dataToUpdate)
+    .returning('*')
+    .then(function (result) {
+      console.log(result);
+      res.json(result);
+      res.status(200).send();
+    })
+    .catch((e) => {
+      console.log(e);
+      res.status(404).send();
+    });
+});
+
+/**  get disaster by type
+ * @params type
+ * @returns status 200 and disasters of selected type when OK, status 404 when not OK
+ */
+app.get('/emotions/:uuid', async (req, res) => {
+  pg('emotions')
+    .select('*')
+    .where({
+      uuid: req.params.uuid,
+    })
+    .then((result) => {
+      res.json(result);
+      res.status(200).send();
+    })
+    .catch((e) => {
+      console.log(e);
+      res.status(404).send();
+    });
+});
+
 //DELETE
 //DELETE selected entry based on VALID ID number from emotions table
 //.where('id',<your valid id number>)

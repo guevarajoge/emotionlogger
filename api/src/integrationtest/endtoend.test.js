@@ -62,32 +62,32 @@ describe('POST/ emotions endpoint', () => {
     }
   });
 
-  //   test('if put request succeeds', async (done) => {
-  //     try {
-  //       const response = await request.put(`/emotions`).send({
-  //         uuid: uuid,
-  //         emotion: 'mad',
-  //       });
-  //       expect(response.status).toBe(200);
-  //       expect(response.body[0]).toHaveProperty('emotion', 'mad');
-  //       done();
-  //     } catch (e) {
-  //       if (e) console.log(e);
-  //     }
-  //   });
+  test('if put request succeeds', async (done) => {
+    try {
+      const response = await request.put(`/emotions`).send({
+        uuid: uuid,
+        emotion: 'mad',
+      });
+      expect(response.status).toBe(200);
+      expect(response.body[0]).toHaveProperty('emotion', 'mad');
+      done();
+    } catch (e) {
+      if (e) console.log(e);
+    }
+  });
 
-  //   test('if get request of join succeeds', async (done) => {
-  //     try {
-  //       const response = await request.get(`/join`);
-  //       expect(response.status).toBe(200);
-  //       console.log('HERE');
-  //       console.log(response.body);
-  //       //   expect(response.body[0]['emotion']).toBeDefined();
-  //       done();
-  //     } catch (e) {
-  //       if (e) console.log(e);
-  //     }
-  //   });
+  test('if get request of join succeeds', async (done) => {
+    try {
+      const response = await request.get(`/join`);
+      expect(response.status).toBe(200);
+      console.log('HERE');
+      console.log(response.body);
+      //   expect(response.body[0]['emotion']).toBeDefined();
+      done();
+    } catch (e) {
+      if (e) console.log(e);
+    }
+  });
 
   //   test('if emotion is removed from database when passing correct uuid', async () => {
   //     try {
