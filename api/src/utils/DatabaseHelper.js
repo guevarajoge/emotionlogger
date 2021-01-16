@@ -49,6 +49,7 @@ async function initialiseTables() {
           table.increments();
           table.uuid('uuid');
           table.string('category');
+          table.string('category_id');
           table.timestamps(true, true);
         })
         .then(async () => {
@@ -57,10 +58,10 @@ async function initialiseTables() {
           console.log('created 4 e_categories ');
 
           await pg.table('e_categories').insert([
-            { uuid, category: `happy` },
-            { uuid, category: `sad` },
-            { uuid, category: `angry` },
-            { uuid, category: `surprise` },
+            { uuid, category: `happy`, category_id: '1' },
+            { uuid, category: `sad`, category_id: '2' },
+            { uuid, category: `angry`, category_id: '3' },
+            { uuid, category: `surprise`, category_id: '4' },
           ]);
 
           // for (let i = 0; i < 3; i++) {

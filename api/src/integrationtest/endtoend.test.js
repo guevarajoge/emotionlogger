@@ -76,12 +76,25 @@ describe('POST/ emotions endpoint', () => {
     }
   });
 
+  //   test('if get request of join succeeds', async (done) => {
+  //     try {
+  //       const response = await request.get(`/join/${uuid}`).send(emoEntry);
+  //       expect(response.status).toBe(200);
+  //       console.log('JOIN');
+  //       // console.log(response.body);
+  //       // expect(response.body[0]['emotion']).toBeDefined();
+  //       done();
+  //     } catch (e) {
+  //       if (e) console.log(e);
+  //     }
+  //   });
+
   test('if get request of join succeeds', async (done) => {
     try {
       const response = await request.get(`/join`);
       expect(response.status).toBe(200);
-      console.log('HERE');
-      console.log(response.body);
+      console.log('JOIN');
+      console.log(response.body[0]);
       //   expect(response.body[0]['emotion']).toBeDefined();
       done();
     } catch (e) {
@@ -89,17 +102,29 @@ describe('POST/ emotions endpoint', () => {
     }
   });
 
-  //   test('if emotion is removed from database when passing correct uuid', async () => {
-  //     try {
-  //       const response = await request.delete(`/emotions/${uuid}`);
-  //       // console.log('HERE');
-  //       // console.log(response.body);
-  //       //   expect(response.status).toBe(200);
-  //       //   expect(response.body).toHaveLength(1);
-  //       //    expect(response.body[0].fatalities).toStrictEqual('22');
-  //       //   expect(response.body[0].emotion).toStrictEqual('mad');
-  //     } catch (error) {
-  //       throw error;
-  //     }
-  //   });
+  test('if emotion is removed from database when passing correct uuid', async () => {
+    try {
+      const response = await request.delete(`/emotions/${uuid}`);
+      console.log('DELETE');
+      console.log(response.body);
+      expect(response.status).toBe(200);
+      expect(response.body).toHaveLength(1);
+      //    expect(response.body[0].fatalities).toStrictEqual('22');
+      expect(response.body[0].emotion).toStrictEqual('mad');
+    } catch (error) {
+      throw error;
+    }
+  });
+
+  test('if record is deleted in db', async (done) => {
+    try {
+      const response = await pg.select('*').table('emotions').where({
+        uuid: uuid,
+      });
+      expect(response.length).toBe(0);
+      done();
+    } catch (e) {
+      if (e) console.log(e);
+    }
+  });
 });

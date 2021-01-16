@@ -15,10 +15,46 @@ app.use(
   })
 );
 
+/**  delete disaster by uuid
+ * @params uuid
+ * @returns status 200 when OK, status 404 when not OK
+ */
+app.delete('/emotions/:uuid', async (req, res) => {
+  const uuid = req.params.uuid;
+  pg('emotions')
+    .where({
+      uuid: uuid,
+    })
+    .returning('*')
+    .del()
+    .then(function (result) {
+      res.json(result);
+      res.status(200).send();
+    })
+    .catch((e) => {
+      console.log(e);
+      res.status(404).send();
+    });
+});
+
 /**
  * @param
  * @returns
  */
+// app.get('/join/:uuid', async (req, res) => {
+//   await pg
+//     .from('emotions')
+//     .innerJoin(
+//       'e_categories',
+//       'emotions.category_id',
+//       'e_categories.category_id'
+//     )
+//     .where('emotions.category_id', req.params.category_id)
+//     .then((data) => {
+//       res.status(200);
+//       res.send(data);
+//     });
+// });
 app.get('/join', async (req, res) => {
   await pg
     .table('emotions')
