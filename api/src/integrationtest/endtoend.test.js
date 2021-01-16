@@ -53,4 +53,18 @@ describe('POST/ emotions endpoint', () => {
       if (e) console.log(e);
     }
   });
+
+  test('if put request succeeds', async (done) => {
+    try {
+      const response = await request.put(`/emotions`).send({
+        uuid: uuid,
+        emotion: 'mad',
+      });
+      expect(response.status).toBe(200);
+      expect(response.body[0]).toHaveProperty('emotion', 'mad');
+      done();
+    } catch (e) {
+      if (e) console.log(e);
+    }
+  });
 });
