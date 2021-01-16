@@ -2,11 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const http = require('http');
 const Helpers = require('./utils/helpers.js');
-
 const pg = require('./utils/DatabaseHelper');
-
 const port = 3000;
-
 const app = express();
 http.Server(app);
 
@@ -57,22 +54,41 @@ app.get('/emotions', async (req, res) => {
 // CREATE
 //POST emotions - endpoint TO BE TESTED
 app.post('/emotions', async (req, res) => {
+  const data = req.body[0];
   if (Object.keys(req.body).length > 0) {
-    const uuid = Helpers.generateUUID();
-
     const result = await pg
-      .insert({ ...req.body, uuid: uuid })
+
       .table('emotions')
+      .insert(data)
       .returning('*')
-      .then((res) => {
-        return res;
+      .then(function (result) {
+        res.status(201);
+        res.json(result).send();
       });
     console.log(result);
-    res.send(result);
+    // res.send(result);
   } else {
     res.status(400).send();
   }
 });
+
+// app.post('/emotions', async (req, res) => {
+//   if (Object.keys(req.body).length > 0) {
+//     const uuid = Helpers.generateUUID();
+
+//     const result = await pg
+//       .insert({ ...req.body, uuid: uuid })
+//       .table('emotions')
+//       .returning('*')
+//       .then((res) => {
+//         return res;
+//       });
+//     console.log(result);
+//     res.send(result);
+//   } else {
+//     res.status(400).send();
+//   }
+// });
 
 // adds 1 entry to emotions table
 //POST add emotions

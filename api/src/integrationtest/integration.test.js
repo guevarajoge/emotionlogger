@@ -6,13 +6,23 @@ const Helpers = require('../utils/helpers');
 
 // adds one entry to emotions table
 // POST /emotions Test endpoint
+
 describe('POST/ emotions endpoint', () => {
+  const uuid = Helpers.generateUUID();
+  let emoEntry = [
+    {
+      uuid: uuid,
+      emotion: 'hopefull',
+      category_id: 4,
+    },
+    {
+      e_category: 'happy',
+    },
+  ];
+
   test('if user adds record with body', async (done) => {
     try {
-      await request
-        .post('/emotions')
-        .send({ emotion: 'surprise', category_id: 4 })
-        .expect(200);
+      await request.post('/emotions').send(emoEntry).expect(201);
       done();
     } catch (error) {}
   });
@@ -25,6 +35,7 @@ describe('POST/ emotions endpoint', () => {
   });
 });
 
+/*
 // POST /emotions-1. Test if endpoint exist
 describe('POST/ emotions-1 endpoint', () => {
   test('if endpoint exist', async (done) => {
@@ -44,6 +55,7 @@ describe('POST/ emotions-8 endpoint', () => {
     } catch (error) {}
   });
 });
+*/
 
 // test GET/emotions endpoint
 describe('check GET /emotions ', () => {
@@ -60,6 +72,7 @@ describe('check GET /emotions ', () => {
       console.log(error);
     }
   });
+
   test('check that GET/emotions return all results & that all columns are defined ', async (done) => {
     try {
       const waitRequest = await request.get('/emotions');
