@@ -15,6 +15,26 @@ app.use(
   })
 );
 
+/**  get disaster by type
+ * @params type
+ * @returns status 200 and disasters of selected type when OK, status 404 when not OK
+ */
+app.get('/emotions/:uuid', async (req, res) => {
+  pg('emotions')
+    .select('*')
+    .where({
+      uuid: req.params.uuid,
+    })
+    .then((result) => {
+      res.json(result);
+      res.status(200).send();
+    })
+    .catch((e) => {
+      console.log(e);
+      res.status(404).send();
+    });
+});
+
 //DELETE
 //DELETE selected entry based on VALID ID number from emotions table
 //.where('id',<your valid id number>)
