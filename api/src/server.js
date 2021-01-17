@@ -2,11 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const http = require('http');
 const Helpers = require('./utils/helpers.js');
-
 const pg = require('./utils/DatabaseHelper');
-
 const port = 3000;
-
 const app = express();
 http.Server(app);
 
@@ -18,9 +15,76 @@ app.use(
   })
 );
 
-//DELETE
-//DELETE selected entry based on VALID ID number from emotions table
-//.where('id',<your valid id number>)
+/** DELETE:  delete emotion by uuid
+ * @params uuid
+ * @returns status 200 when OK, status 404 when not OK
+ */
+app.delete('/emotions/:uuid', async (req, res) => {
+  const uuid = req.params.uuid;
+  pg('emotions')
+    .where({
+      uuid: uuid,
+    })
+    .returning('*')
+    .del()
+    .then(function (result) {
+      res.json(result);
+      res.status(200).send();
+    })
+    .catch((e) => {
+      console.log(e);
+      res.status(404).send();
+    });
+});
+
+/** PUT:  update emotion by uuid
+ * @params uuid
+ * @returns status 200 and updated emotion when OK, status 404 when not OK
+ */
+app.put('/emotions', async (req, res) => {
+  const uuid = req.body.uuid;
+  const dataToUpdate = req.body;
+  pg('emotions')
+    .where({
+      uuid: uuid,
+    })
+    .update(dataToUpdate)
+    .returning('*')
+    .then(function (result) {
+      console.log(result);
+      res.json(result);
+      res.status(200).send();
+    })
+    .catch((e) => {
+      console.log(e);
+      res.status(404).send();
+    });
+});
+
+/** GET:  get emotion by uuid
+ * @params uuid
+ * @returns status 200 and emotions of selected uuid when OK, status 404 when not OK
+ */
+app.get('/emotions/:uuid', async (req, res) => {
+  pg('emotions')
+    .select('*')
+    .where({
+      uuid: req.params.uuid,
+    })
+    .then((result) => {
+      res.json(result);
+      res.status(200).send();
+    })
+    .catch((e) => {
+      console.log(e);
+      res.status(404).send();
+    });
+});
+
+/** DELETE: delete selected emotion based on VALID ID number from emotions table
+ * @params id
+ * @returns deleted object
+ */
 app.delete('/emotions-down', async (req, res) => {
   const result = await pg
     .table('emotions')
@@ -34,8 +98,10 @@ app.delete('/emotions-down', async (req, res) => {
   res.send(result);
 });
 
-//READ
-//GET emotions - endpoint
+/** GET:  get all emotions
+ * @params
+ * @returns object with all emotions entries
+ */
 app.get('/emotions', async (req, res) => {
   const result = await pg
     .select([
@@ -50,32 +116,35 @@ app.get('/emotions', async (req, res) => {
   res.json({
     res: result,
   });
-  // console.log('show first entry with all columns');
-  // console.log(result[0]);
 });
 
-// CREATE
-//POST emotions - endpoint TO BE TESTED
+/** POST:  add emotion
+ * @params req.body
+ * @returns status 201 and inserted emotion when OK, status 400 when not OK
+ */
 app.post('/emotions', async (req, res) => {
+  const data = req.body[0];
   if (Object.keys(req.body).length > 0) {
-    const uuid = Helpers.generateUUID();
-
     const result = await pg
-      .insert({ ...req.body, uuid: uuid })
+
       .table('emotions')
+      .insert(data)
       .returning('*')
-      .then((res) => {
-        return res;
+      .then(function (result) {
+        res.status(201);
+        res.json(result).send();
+        console.log('Integration POST');
+        console.log(result);
       });
-    console.log(result);
-    res.send(result);
   } else {
     res.status(400).send();
   }
 });
 
-// adds 1 entry to emotions table
-//POST add emotions
+/** POST:  add emotion
+ * @params req.body
+ * @returns body entry
+ */
 app.post('/emotions-1', async (req, res) => {
   const uuid = Helpers.generateUUID();
   const result = await pg
@@ -91,8 +160,10 @@ app.post('/emotions-1', async (req, res) => {
   res.send(result);
 });
 
-// adds 8 entries to the emotions table
-//POST add emotions
+/** POST:  add 8 emotions
+ * @params req.body
+ * @returns body entries
+ */
 app.post('/emotions-8', async (req, res) => {
   const uuid = Helpers.generateUUID();
   const result = await pg
@@ -117,24 +188,22 @@ app.post('/emotions-8', async (req, res) => {
   res.send(result);
 });
 
-/**
- * Initial enpoints
- * they have only testing purpose via the integration test
+/** GET: join tables
+ * @param
+ * @returns
  */
-app.get('/test', (req, res) => {
-  if (Object.keys(req.query).length > 0) {
-    res.sendStatus(400);
-  }
-  res.status(204).send();
+app.get('/join', async (req, res) => {
+  await pg
+    .table('emotions')
+    .join(
+      'e_categories',
+      pg.raw('emotions.joinbycategory::varchar'),
+      pg.raw('e_categories.uuid::varchar')
+    )
+    .select('e_categories.*', 'emotions.*')
+    .then((data) => {
+      res.status(200);
+      res.send(data);
+    });
 });
-
-app.post('/test', (req, res) => {
-  if (Object.keys(req.body).length > 0) {
-    // console.log('server test');
-    // console.log(req.body);
-    res.sendStatus(201);
-  }
-  res.status(400).send();
-});
-
 module.exports = app;
