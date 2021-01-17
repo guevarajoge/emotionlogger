@@ -86,7 +86,6 @@ describe('ENDTOEND TEST', () => {
       console.log(response.body);
       expect(response.status).toBe(200);
       expect(response.body).toHaveLength(1);
-      //    expect(response.body[0].fatalities).toStrictEqual('22');
       expect(response.body[0].emotion).toStrictEqual('mad');
     } catch (error) {
       throw error;
