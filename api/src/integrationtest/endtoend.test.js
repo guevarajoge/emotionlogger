@@ -5,7 +5,7 @@ const request = supertest(app);
 const Helpers = require('../utils/helpers');
 const pg = require('../utils/DatabaseHelper');
 
-describe('POST/ emotions endpoint', () => {
+describe('ENDTOEND TEST', () => {
   let uuid = Helpers.generateUUID();
   const emoEntry = [
     {
@@ -17,7 +17,7 @@ describe('POST/ emotions endpoint', () => {
       e_category: 'happy',
     },
   ];
-  test('if emotion is added to the database', async () => {
+  test('POST- emotions/:uuid/ if emotion is added to the database', async () => {
     try {
       const response = await request.post('/emotions').send(emoEntry);
       expect(response.status).toBe(201);
@@ -30,7 +30,7 @@ describe('POST/ emotions endpoint', () => {
       throw error;
     }
   });
-  test('respond with 400 if no object is sent', async (done) => {
+  test('POST- emotions/ respond with 400 if no object is sent', async (done) => {
     try {
       const storyblockPost = await request.post('/emotions');
       expect(storyblockPost.status).toBe(400);
@@ -38,7 +38,7 @@ describe('POST/ emotions endpoint', () => {
     } catch (error) {}
   });
 
-  test('if get request succeeds', async (done) => {
+  test('GET- emotions/:uuid/  if get request succeeds', async (done) => {
     try {
       const response = await request.get(`/emotions/${uuid}`);
       expect(response.status).toBe(200);
@@ -52,7 +52,7 @@ describe('POST/ emotions endpoint', () => {
     }
   });
 
-  test('if put request succeeds', async (done) => {
+  test('PUT- emotions/ if put request succeeds', async (done) => {
     try {
       const response = await request.put(`/emotions`).send({
         uuid: uuid,
@@ -66,20 +66,7 @@ describe('POST/ emotions endpoint', () => {
     }
   });
 
-  //   test('if get request of join succeeds', async (done) => {
-  //     try {
-  //       const response = await request.get(`/join/${uuid}`).send(emoEntry);
-  //       expect(response.status).toBe(200);
-  //       console.log('JOIN');
-  //       // console.log(response.body);
-  //       // expect(response.body[0]['emotion']).toBeDefined();
-  //       done();
-  //     } catch (e) {
-  //       if (e) console.log(e);
-  //     }
-  //   });
-
-  test('if get request of join succeeds', async (done) => {
+  test('GET- join/  if get request of join succeeds', async (done) => {
     try {
       const response = await request.get(`/join`);
       expect(response.status).toBe(200);
@@ -92,7 +79,7 @@ describe('POST/ emotions endpoint', () => {
     }
   });
 
-  test('if emotion is removed from database when passing correct uuid', async () => {
+  test('DELETE- emotions/:uuid/ if emotion is removed from database when passing correct uuid', async () => {
     try {
       const response = await request.delete(`/emotions/${uuid}`);
       console.log('DELETE');

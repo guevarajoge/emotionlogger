@@ -5,9 +5,6 @@ const request = supertest(app);
 const Helpers = require('../utils/helpers');
 const pg = require('../utils/DatabaseHelper');
 
-// adds one entry to emotions table
-// POST /emotions Test endpoint
-
 describe('POST/ emotions endpoint', () => {
   let uuid = Helpers.generateUUID();
   const emoEntry = [
@@ -58,22 +55,18 @@ describe('POST/ emotions-8 endpoint', () => {
 });
 */
 
-// test GET/emotions endpoint
 describe('check GET /emotions ', () => {
   test('check that GET /emotions exist ', async (done) => {
     try {
       await request
         .get('/emotions')
         .expect(200)
-        .then((res) => {
-          // console.log(res.body.res[0]);
-        });
+        .then((res) => {});
       done();
     } catch (error) {
       console.log(error);
     }
   });
-
   test('check that GET/emotions return all results & that all columns are defined ', async (done) => {
     try {
       const waitRequest = await request.get('/emotions');
@@ -104,10 +97,6 @@ describe('check GET /emotions ', () => {
   });
 });
 
-/**
- * Initial enpoints test
- */
-//GET /test endpoint
 describe('GET /test end point', () => {
   test('check respond with 204', async (done) => {
     try {
