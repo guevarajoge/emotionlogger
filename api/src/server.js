@@ -163,9 +163,9 @@ app.post('/emotions', async (req, res) => {
       .then(function (result) {
         res.status(201);
         res.json(result).send();
+        console.log('Integration POST');
+        console.log(result);
       });
-    console.log(result);
-    // res.send(result);
   } else {
     res.status(400).send();
   }
