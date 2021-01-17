@@ -17,7 +17,7 @@ describe('ENDTOEND TEST', () => {
       e_category: 'happy',
     },
   ];
-  test('POST- emotions/:uuid/ if emotion is added to the database', async () => {
+  test('POST- emotions/ if emotion is added to the database', async () => {
     try {
       const response = await request.post('/emotions').send(emoEntry);
       expect(response.status).toBe(201);

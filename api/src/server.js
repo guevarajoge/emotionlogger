@@ -150,8 +150,10 @@ app.get('/emotions', async (req, res) => {
   // console.log(result[0]);
 });
 
-// CREATE
-//POST emotions - endpoint TO BE TESTED
+/**  CREATE - add emotion
+ * @params req.body
+ * @returns status 201 and inserted emotion when OK, status 400 when not OK
+ */
 app.post('/emotions', async (req, res) => {
   const data = req.body[0];
   if (Object.keys(req.body).length > 0) {
