@@ -10,8 +10,8 @@ const Helpers = {
    * checks if an emotion entry is not longer than 50 chars,
    * cannot beging with a capital letter,
    * must be a string
-   * @params: checkingEmoEntry: String
-   * returns a String
+   * @params checkingEmoEntry: String
+   * @returns a String
    */
 
   checkingEmoEntry: (a) => {
